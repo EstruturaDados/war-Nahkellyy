@@ -34,10 +34,6 @@
 #include <stdio.h>
 #include <string.h>
 
-/*
-    Struct Territorio:
-    Representa um território com nome, cor do exército e quantidade de tropas.
-*/
 typedef struct {
     char nome[30];
     char cor[10];
