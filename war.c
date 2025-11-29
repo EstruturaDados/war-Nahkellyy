@@ -31,25 +31,56 @@
 
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
+#include <stdio.h>
+#include <string.h>
+
+/*
+    Struct Territorio:
+    Representa um território com nome, cor do exército e quantidade de tropas.
+*/
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
+
 int main() {
-    // 1. Configuração Inicial (Setup):
-    // - Define o locale para português.
-    // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
-    // - Aloca a memória para o mapa do mundo e verifica se a alocação foi bem-sucedida.
-    // - Preenche os territórios com seus dados iniciais (tropas, donos, etc.).
-    // - Define a cor do jogador e sorteia sua missão secreta.
+     Territorio territorios[5];  // Vetor que armazenará 5 territórios
+    int i;
 
-    // 2. Laço Principal do Jogo (Game Loop):
-    // - Roda em um loop 'do-while' que continua até o jogador sair (opção 0) ou vencer.
-    // - A cada iteração, exibe o mapa, a missão e o menu de ações.
-    // - Lê a escolha do jogador e usa um 'switch' para chamar a função apropriada:
-    //   - Opção 1: Inicia a fase de ataque.
-    //   - Opção 2: Verifica se a condição de vitória foi alcançada e informa o jogador.
-    //   - Opção 0: Encerra o jogo.
-    // - Pausa a execução para que o jogador possa ler os resultados antes da próxima rodada.
+    printf("=== Cadastro de Territorios ===\n\n");
 
-    // 3. Limpeza:
-    // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
+    // Entrada de dados dos territórios
+    for (i = 0; i < 5; i++) {
+        printf("Cadastro do territorio %d:\n", i + 1);
+
+        // Leitura do nome
+        printf("Digite o nome do territorio: ");
+        scanf("%29s", territorios[i].nome);  
+        // %29s evita overflow e limita o tamanho
+
+        //cor do exército
+        printf("Digite a cor do exercito: ");
+        scanf("%9s", territorios[i].cor);
+
+        //número de tropas
+        printf("Digite o numero de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+
+        printf("\n");
+    }
+
+    // Exibição dos dados cadastrados
+    printf("\n=== Territorios Cadastrados ===\n\n");
+
+    for (i = 0; i < 5; i++) {
+        printf("Territorio %d:\n", i + 1);
+        printf("Nome: %s\n", territorios[i].nome);
+        printf("Cor do exercito: %s\n", territorios[i].cor);
+        printf("Tropas: %d\n", territorios[i].tropas);
+        printf("-----------------------------\n");
+    }
+
 
     return 0;
 }
